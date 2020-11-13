@@ -8,7 +8,8 @@
 #include <QMessageBox>
 #include <QtPrintSupport/QPrintDialog>
 #include <QtPrintSupport/QPrinter>
-#include "AboutDialog.h"
+
+#include "dialogs/AboutDialog.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
