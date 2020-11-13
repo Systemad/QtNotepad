@@ -15,9 +15,6 @@ public:
     explicit AboutDialog(QWidget *parent = nullptr);
     ~AboutDialog();
 
-protected slots:
-    void on_closeButton_clicked();
-
 private:
     Ui::AboutDialog *ui;
     QString buildQtVersionString(void);

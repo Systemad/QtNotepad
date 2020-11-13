@@ -17,17 +17,20 @@ AboutDialog::AboutDialog(QWidget *parent) :
 
     QString aboutVersion = "<b>Version:</b>" + QString(" 1.0");
 
-     ui->versionLabel->setText(aboutVersion);
+    ui->versionLabel->setText(aboutVersion);
 
+    ui->createdLabel->setText("<a href=\"https://github.com/Systemad\"><b>Created by systemad@github</b></a>");
+    ui->createdLabel->setTextFormat(Qt::RichText);
+    ui->createdLabel->setTextInteractionFlags(Qt::TextBrowserInteraction);
+    ui->createdLabel->setOpenExternalLinks(true);
+
+    ui->githubrepoLabel->setText("<a href=\"https://github.com/Systemad/QtNotepad\"><b>GitHub</b></a>");
+    ui->githubrepoLabel->setTextFormat(Qt::RichText);
+    ui->githubrepoLabel->setTextInteractionFlags(Qt::TextBrowserInteraction);
+    ui->githubrepoLabel->setOpenExternalLinks(true);
 }
 
 AboutDialog::~AboutDialog()
 {
     delete ui;
-}
-
-
-void AboutDialog::on_closeButton_clicked(){
-
-    this->close();
 }
