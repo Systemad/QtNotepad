@@ -18,7 +18,6 @@ AboutDialog::AboutDialog(QWidget *parent) :
     QString aboutVersion = "<b>Version:</b>" + QString(" 1.0");
 
     ui->versionLabel->setText(aboutVersion);
-
     ui->createdLabel->setText("<a href=\"https://github.com/Systemad\"><b>Created by systemad@github</b></a>");
     ui->createdLabel->setTextFormat(Qt::RichText);
     ui->createdLabel->setTextInteractionFlags(Qt::TextBrowserInteraction);

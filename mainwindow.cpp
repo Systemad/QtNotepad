@@ -1,5 +1,8 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
+#include <QFileDialog>
+#include <QFont>
+#include <QFontDialog>
 
 #include "dialogs/AboutDialog.h"
 
@@ -17,37 +20,38 @@ MainWindow::~MainWindow()
 
 void MainWindow::on_actionNew_triggered()
 {
-    currentFile.clear();
+    m_filename.clear();
     ui->textEdit->setText(QString());
 }
 
 void MainWindow::on_actionOpen_triggered()
 {
-    QString fileName = QFileDialog::getOpenFileName(this, "Open the file");
-    QFile file(fileName);
-    currentFile = fileName;
-    if(!file.open(QIODevice::ReadOnly | QFile::Text)){
-        QMessageBox::warning(this, "Warning", "Cannot open file: " + file.errorString());
-        return;
+    QString file = QFileDialog::getOpenFileName(this,"Open a file");
+    if(!file.isEmpty())
+    {
+        QFile QFile(file);
+        if(QFile.open(QFile::ReadOnly | QFile::Text ))
+        {
+            m_filename = file;
+            QTextStream in(&QFile);
+            QString text = in.readAll();
+            QFile.close();
+            ui->textEdit->setPlainText(text);
+            QFileInfo fileInfo(QFile.fileName());
+            this->setWindowTitle(fileInfo.fileName());
+        }
     }
-
-    setWindowTitle(fileName);
-    QTextStream in(&file);
-    QString text = in.readAll();
-    ui->textEdit->setText(text);
-    file.close();
 }
-
 void MainWindow::on_actionSave_as_triggered()
 {
     QString fileName = QFileDialog::getSaveFileName(this, "Save as");
     QFile file(fileName);
-    currentFile = fileName;
+    m_filename = fileName;
     if(!file.open(QIODevice::WriteOnly | QFile::Text)){
         QMessageBox::warning(this, "Warning", "Cannot save file: " + file.errorString());
         return;
     }
-    currentFile = fileName;
+    m_filename = fileName;
     setWindowTitle(fileName);
     QTextStream out(&file);
     QString text = ui->textEdit->toPlainText();
@@ -62,6 +66,22 @@ void MainWindow::on_actionExit_triggered()
 
 void MainWindow::on_actionAbout_triggered()
 {
-    aboutDialog = new AboutDialog(this);
-    aboutDialog->show();
+    m_aboutDialog = new AboutDialog(this);
+    m_aboutDialog->show();
+}
+
+void MainWindow::on_actionSave_triggered()
+{
+    // If no file has been opened, call save ass function
+    if(m_filename.isEmpty())
+        on_actionSave_as_triggered();
+
+    QFile QFile(m_filename);
+
+    if(QFile.open(QFile::WriteOnly | QFile::Text)){
+        QTextStream out(&QFile);
+        out << ui->textEdit->toPlainText();
+        QFile.flush();
+        QFile.close();
+    }
 }
