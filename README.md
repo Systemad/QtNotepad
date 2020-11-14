@@ -6,7 +6,8 @@ Notepad created in QtCreator. This is just a training ground to learn Qt.
 - Save file
 - Open File
 
-- Copy / Paste contents of file
+- Copy / Paste / Cut contents of file
+- Undo / Redo action
 - Exit program
 - About Dialog with version number
 
