@@ -10,6 +10,7 @@
 #include <QtPrintSupport/QPrinter>
 
 #include "dialogs/AboutDialog.h"
+#include "dialogs/settingsdialog.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -24,17 +25,24 @@ public:
     ~MainWindow();
 
 private slots:
-    void on_actionNew_triggered();
-    void on_actionOpen_triggered();
-    void on_actionSave_as_triggered();
-    void on_actionExit_triggered();
-    void on_actionAbout_triggered();
+    void actionNew();
+    void actionOpen();
+    void actionSaveAs();
+    void actionExit();
+    void actionAbout();
+    void actionSave();
+    void actionRedo();
+    void actionUndo();
+    void actionCut();
+    void actionPaste();
+    void actionCopy();
 
-    void on_actionSave_triggered();
+    void actionSettings();
 
 private:
     Ui::MainWindow *ui;
     QString m_filename;
     AboutDialog *m_aboutDialog;
+    SettingsDialog *m_settingsDialog;
 };
 #endif // MAINWINDOW_H

@@ -10,15 +10,18 @@ CONFIG += c++11
 
 SOURCES += \
     dialogs/AboutDialog.cpp \
+    dialogs/settingsdialog.cpp \
     main.cpp \
     mainwindow.cpp
 
 HEADERS += \
     dialogs/AboutDialog.h \
+    dialogs/settingsdialog.h \
     mainwindow.h
 
 FORMS += \
     dialogs/aboutdialog.ui \
+    dialogs/settingsdialog.ui \
     mainwindow.ui
 
 # Default rules for deployment.

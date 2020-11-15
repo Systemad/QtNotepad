@@ -5,12 +5,27 @@
 #include <QFontDialog>
 
 #include "dialogs/AboutDialog.h"
+#include "dialogs/settingsdialog.h"
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+    connect(ui->actionNew, &QAction::triggered, this, &MainWindow::actionNew);
+    connect(ui->actionOpen, &QAction::triggered, this, &MainWindow::actionOpen);
+    connect(ui->actionSave_as, &QAction::triggered, this, &MainWindow::actionSaveAs);
+    connect(ui->actionExit, &QAction::triggered, this, &MainWindow::actionExit);
+    connect(ui->actionAbout, &QAction::triggered, this, &MainWindow::actionAbout);
+    connect(ui->actionSave, &QAction::triggered, this, &MainWindow::actionSave);
+
+    connect(ui->actionRedo, &QAction::triggered, this, &MainWindow::actionRedo);
+    connect(ui->actionUndo, &QAction::triggered, this, &MainWindow::actionUndo);
+    connect(ui->actionCut, &QAction::triggered, this, &MainWindow::actionCut);
+    connect(ui->actionPaste, &QAction::triggered, this, &MainWindow::actionPaste);
+    connect(ui->actionCopy, &QAction::triggered, this, &MainWindow::actionCopy);
+    connect(ui->actionSettings, &QAction::triggered, this, &MainWindow::actionSettings);
+
     this->setCentralWidget(ui->textEdit);
 }
 MainWindow::~MainWindow()
@@ -18,13 +33,13 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
-void MainWindow::on_actionNew_triggered()
+void MainWindow::actionNew()
 {
     m_filename.clear();
     ui->textEdit->setText(QString());
 }
 
-void MainWindow::on_actionOpen_triggered()
+void MainWindow::actionOpen()
 {
     QString file = QFileDialog::getOpenFileName(this,"Open a file");
     if(!file.isEmpty())
@@ -42,7 +57,7 @@ void MainWindow::on_actionOpen_triggered()
         }
     }
 }
-void MainWindow::on_actionSave_as_triggered()
+void MainWindow::actionSaveAs()
 {
     QString fileName = QFileDialog::getSaveFileName(this, "Save as");
     QFile file(fileName);
@@ -59,22 +74,22 @@ void MainWindow::on_actionSave_as_triggered()
     file.close();
 }
 
-void MainWindow::on_actionExit_triggered()
+void MainWindow::actionExit()
 {
     QApplication::quit();
 }
 
-void MainWindow::on_actionAbout_triggered()
+void MainWindow::actionAbout()
 {
     m_aboutDialog = new AboutDialog(this);
     m_aboutDialog->show();
 }
 
-void MainWindow::on_actionSave_triggered()
+void MainWindow::actionSave()
 {
     // If no file has been opened, call save ass function
     if(m_filename.isEmpty())
-        on_actionSave_as_triggered();
+        actionSaveAs();
 
     QFile QFile(m_filename);
 
@@ -86,27 +101,34 @@ void MainWindow::on_actionSave_triggered()
     }
 }
 
-void MainWindow::on_actionRedo_triggered()
+void MainWindow::actionRedo()
 {
     ui->textEdit->redo();
 }
 
-void MainWindow::on_actionUndo_triggered()
+void MainWindow::actionUndo()
 {
     ui->textEdit->undo();
 }
 
-void MainWindow::on_actionCut_triggered()
+void MainWindow::actionCut()
 {
     ui->textEdit->cut();
 }
 
-void MainWindow::on_actionPaste_triggered()
+void MainWindow::actionPaste()
 {
     ui->textEdit->paste();
 }
 
-void MainWindow::on_actionCopy_triggered()
+void MainWindow::actionCopy()
 {
     ui->textEdit->copy();
+}
+
+void MainWindow::actionSettings()
+{
+
+    m_settingsDialog = new SettingsDialog(this);
+    m_settingsDialog->show();
 }

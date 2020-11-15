@@ -7,6 +7,7 @@
 #include <QJsonObject>
 #include <QProgressBar>
 #include <QProgressDialog>
+#include "mainwindow.h"
 
 AboutDialog::AboutDialog(QWidget *parent) :
     QDialog(parent),
