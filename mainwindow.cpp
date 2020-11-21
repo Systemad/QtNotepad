@@ -26,6 +26,7 @@ MainWindow::MainWindow(QWidget *parent)
     connect(ui->actionCopy, &QAction::triggered, this, &MainWindow::actionCopy);
     connect(ui->actionSettings, &QAction::triggered, this, &MainWindow::actionSettings);
 
+    m_settingsDialog = new SettingsDialog(this);
     this->setWindowTitle("Notepad");
     this->setCentralWidget(ui->textEdit);
 }

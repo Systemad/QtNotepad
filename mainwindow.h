@@ -16,12 +16,16 @@ QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
 QT_END_NAMESPACE
 
+class SettingsDialog;
+
 class MainWindow : public QMainWindow
 {
     Q_OBJECT
 
 public:
     MainWindow(QWidget *parent = nullptr);
+    Ui::MainWindow *ui;
+    SettingsDialog *m_settingsDialog;
     ~MainWindow();
 
 private slots:
@@ -40,9 +44,8 @@ private slots:
     void actionSettings();
 
 private:
-    Ui::MainWindow *ui;
     QString m_filename;
     AboutDialog *m_aboutDialog;
-    SettingsDialog *m_settingsDialog;
+
 };
 #endif // MAINWINDOW_H
