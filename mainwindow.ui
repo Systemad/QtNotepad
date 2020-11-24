@@ -36,7 +36,7 @@
      <x>0</x>
      <y>0</y>
      <width>800</width>
-     <height>25</height>
+     <height>27</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuFile">
@@ -47,8 +47,9 @@
     <addaction name="actionOpen"/>
     <addaction name="actionSave"/>
     <addaction name="actionSave_as"/>
-    <addaction name="actionExit"/>
+    <addaction name="actionSettings"/>
     <addaction name="actionAbout"/>
+    <addaction name="actionExit"/>
    </widget>
    <widget class="QMenu" name="menuEdit">
     <property name="title">
@@ -59,7 +60,6 @@
     <addaction name="actionCut"/>
     <addaction name="actionUndo"/>
     <addaction name="actionRedo"/>
-    <addaction name="actionSettings"/>
    </widget>
    <addaction name="menuFile"/>
    <addaction name="menuEdit"/>

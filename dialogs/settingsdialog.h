@@ -20,12 +20,12 @@ public:
 
 
 private slots:
-    void clearButtonText();
-    void on_clearButton_clicked();
-
-    void on_bold_checkBox_clicked();
+    void set_bold_text();
+    void saveSettings();
+    void loadSettings();
 
 private:
+    QString m_SettingsFile;
     MainWindow* m_mainwin;
 };
 

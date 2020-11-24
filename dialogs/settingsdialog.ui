@@ -13,17 +13,17 @@
   <property name="windowTitle">
    <string>Dialog</string>
   </property>
-  <widget class="QPushButton" name="clearButton">
+  <widget class="QPushButton" name="save_button">
    <property name="geometry">
     <rect>
      <x>10</x>
      <y>270</y>
-     <width>91</width>
+     <width>121</width>
      <height>30</height>
     </rect>
    </property>
    <property name="text">
-    <string>Clear Text</string>
+    <string>Save Settings</string>
    </property>
   </widget>
   <widget class="QCheckBox" name="bold_checkBox">
@@ -36,7 +36,20 @@
     </rect>
    </property>
    <property name="text">
-    <string>CheckBox</string>
+    <string>Bold text</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="load_button">
+   <property name="geometry">
+    <rect>
+     <x>140</x>
+     <y>270</y>
+     <width>121</width>
+     <height>30</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Load Settings</string>
    </property>
   </widget>
  </widget>

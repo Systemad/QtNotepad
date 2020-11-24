@@ -8,7 +8,7 @@
 #include <QMessageBox>
 #include <QtPrintSupport/QPrintDialog>
 #include <QtPrintSupport/QPrinter>
-
+#include <QAction>
 #include "dialogs/AboutDialog.h"
 #include "dialogs/settingsdialog.h"
 
@@ -33,7 +33,6 @@ private slots:
     void actionOpen();
     void actionSaveAs();
     void actionExit();
-    void actionAbout();
     void actionSave();
     void actionRedo();
     void actionUndo();
@@ -41,11 +40,11 @@ private slots:
     void actionPaste();
     void actionCopy();
 
+    void actionAbout();
     void actionSettings();
 
 private:
     QString m_filename;
     AboutDialog *m_aboutDialog;
-
 };
 #endif // MAINWINDOW_H

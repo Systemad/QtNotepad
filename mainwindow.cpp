@@ -3,6 +3,7 @@
 #include <QFileDialog>
 #include <QFont>
 #include <QFontDialog>
+#include <QAction>
 
 #include "dialogs/AboutDialog.h"
 #include "dialogs/settingsdialog.h"
@@ -11,6 +12,7 @@ MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
 {
+
     ui->setupUi(this);
     connect(ui->actionNew, &QAction::triggered, this, &MainWindow::actionNew);
     connect(ui->actionOpen, &QAction::triggered, this, &MainWindow::actionOpen);
@@ -26,6 +28,7 @@ MainWindow::MainWindow(QWidget *parent)
     connect(ui->actionCopy, &QAction::triggered, this, &MainWindow::actionCopy);
     connect(ui->actionSettings, &QAction::triggered, this, &MainWindow::actionSettings);
 
+
     m_settingsDialog = new SettingsDialog(this);
     this->setWindowTitle("Notepad");
     this->setCentralWidget(ui->textEdit);
@@ -39,6 +42,7 @@ void MainWindow::actionNew()
 {
     m_filename.clear();
     ui->textEdit->setText(QString());
+
 }
 
 void MainWindow::actionOpen()
